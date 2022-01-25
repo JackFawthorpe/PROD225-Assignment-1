@@ -124,3 +124,8 @@ void Character::setRoom(Room* currentRoom)
 {
 	m_currentRoom = currentRoom;
 }
+
+Room* Character::getRoom() const
+{
+	return m_currentRoom;
+}

@@ -60,6 +60,11 @@ public:
 	
 		return *this;
 	}
+
+	int distance(const Vector2D<T>& SecondVector)
+	{
+		return abs(this->x - SecondVector.x) + abs(this->y - SecondVector.y);
+	}
 };
 
 #endif /*__TVECTOR2D_H__*/

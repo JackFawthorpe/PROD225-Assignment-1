@@ -16,6 +16,7 @@ class Room
 public:
 	Room();
 	~Room();
+	Room(Door* door);
 
 	void tick();
 	void draw() const;

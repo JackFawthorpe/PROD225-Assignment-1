@@ -71,9 +71,6 @@
     <ClInclude Include="tvector2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tarray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="prod225cursorwrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -93,6 +90,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="door.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tarray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

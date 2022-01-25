@@ -54,6 +54,8 @@ void Player::evaluateKeyPress(char& keyPressed)
 	case SPACE_BAR:
 		Character::attack();
 		break;
+	case 'E':
+		Player::openDoor();
 	}
 	
 }
@@ -71,5 +73,27 @@ void Player::draw()
 
 void Player::openDoor()
 {
+	TArray<Door*>* doors = m_currentRoom->getDoors();
+	for (int i = 0; i < doors->num(); i++)
+	{
+		const Vector2D<int> doorPosition = doors->getElement(i)->getPosition();
+		int distance = m_position.distance(doorPosition);
+		if (distance < 3)
+		{
+			
+			if (!doors->getElement(i)->isCompleted())
+			{
+				doors->getElement(i)->generateSecondRoom();
+			}
+			MoveCursorTo(49, 28);
+			std::cout << "You are opening the door";
+			
+			doors->getElement(i)->swapRoom(this);
 
+			return;
+		}
+	}
+
+	MoveCursorTo(49, 28);
+	std::cout << "Dumbass, you ain't even close to a door";
 }

@@ -51,7 +51,21 @@ Room::~Room()
 	}
 }
 
-
+Room::Room(Door* door)
+	: Room()
+{
+	for (int i = 0; i < m_doors.num(); i++)
+	{
+		if (door->getPosition() == m_doors.getElement(i)->getPosition())
+		{
+			delete m_doors.getElement(i);
+			m_doors.removeElement(i);
+			m_doors.addElement(door);
+			return;
+		}
+	}
+	m_doors.addElement(door);
+}
 void Room::tick()
 {
 	for (int i = 0; i < m_enemies.num(); i++)

@@ -30,6 +30,7 @@ public:
 	virtual int getHealth() const;
 	virtual TArray<Weapon*>* getInventory();
 	virtual void setRoom(Room* currentRoom);
+	virtual Room* getRoom() const;
 
 protected:
 	Vector2D<int> m_leftHand;

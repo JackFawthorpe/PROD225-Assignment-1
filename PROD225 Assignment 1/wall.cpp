@@ -62,11 +62,11 @@ Vector2D<int> Wall::getRandomPositionOnWall()
 	Vector2D<int> newVector = m_firstCorner;
 	if (m_vert)
 	{
-		newVector += Vector2D<int>(0, rand() % ((m_secondCorner.y - m_firstCorner.y) - 2) + 1) ;
+		newVector += Vector2D<int>(0, rand() % ((m_secondCorner.y - m_firstCorner.y) - 4) + 2) ;
 	}
 	else
 	{
-		newVector += Vector2D<int>(rand() % ((m_secondCorner.x - m_firstCorner.x) - 2) + 1, 0);
+		newVector += Vector2D<int>(rand() % ((m_secondCorner.x - m_firstCorner.x) - 4) + 2, 0);
 	}
 	return newVector;
 }

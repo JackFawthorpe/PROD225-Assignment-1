@@ -85,26 +85,19 @@ int main()
 	Player player;
 	player.setPosition(10, 10);
 
-	Room* room = new Room;
+	Room* currentRoom = new Room;
+	player.setRoom(currentRoom);
 
-	//TArray<Enemy*> enemies;
-	//
-	//for (int i = 0; i < 5; i++)
-	//{
-	//	Enemy* testEnemy = new (Enemy);
-	//	testEnemy->SetPosition(rand() % 118 + 1, rand() % 28 + 1);
-	//	enemies.addElement(testEnemy);
-	//}
 	char keyPressed = '\0';
 
-	// Input keypress and check its not q
 	while (keyPressed = _getch(), toupper(keyPressed) != 'Q')
 	{
 		ClearScreen();
 		PrintUI(&player);
-		room->tick();
 		keyPressed = toupper(keyPressed);
 		player.tick(keyPressed);
+		currentRoom = player.getRoom();
+		currentRoom->tick();
 		MoveCursorTo(49, 29);
 		SetTextColour(PROD225Colours::BLACK, PROD225Colours::WHITE);
 		std::cout << " The key pressed was " << keyPressed << " ";

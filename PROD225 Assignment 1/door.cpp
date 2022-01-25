@@ -5,7 +5,9 @@
 
 Door::Door(Room* startRoom)
 	:m_firstRoom(startRoom)
-	//,m_secondRoom(new Room)
+	, m_currentRoom(startRoom)
+	, m_currentPosition(&m_firstPosition)
+	, m_completed(false)
 {
 	int wallIndex = rand() % m_firstRoom->getWalls()->num();
 	m_firstPosition = m_firstRoom->getWalls()->getElement(wallIndex)->getRandomPositionOnWall();
@@ -26,6 +28,58 @@ Door::~Door()
 
 void Door::draw() const
 {
-	cursorToVector(m_firstPosition);
+	cursorToVector(*m_currentPosition);
 	std::cout << char(241);
+}
+
+Vector2D<int> Door::getPosition() const
+{
+	return *m_currentPosition;
+}
+
+void Door::generateSecondRoom()
+{
+	if (m_firstPosition.x == 0)
+	{
+		m_secondPosition.x = 119;
+		m_secondPosition.y = m_firstPosition.y;
+	}
+	else if (m_firstPosition.x == 119)
+	{
+		m_secondPosition.x = 0;
+		m_secondPosition.y = m_firstPosition.y;
+	}
+	else if (m_firstPosition.y == 0)
+	{
+		m_secondPosition.x = m_firstPosition.x;
+		m_secondPosition.y = 22;
+	}
+	else
+	{
+		m_secondPosition.x = m_firstPosition.x;
+		m_secondPosition.y = 0;
+	}
+	m_secondRoom = new Room(this);
+	m_offRoom = m_secondRoom;
+	m_offPosition = &m_secondPosition;
+	m_completed = true;
+}
+
+bool Door::isCompleted()
+{
+	return m_completed;
+}
+
+void Door::swapRoom(Character* character)
+{
+	Room* temp = m_currentRoom;
+	m_currentRoom = m_offRoom;
+	m_offRoom = temp;
+
+	Vector2D<int>* posTemp = m_currentPosition;
+	m_currentPosition = m_offPosition;
+	m_offPosition = posTemp;
+
+	character->setRoom(m_currentRoom);
+
 }
