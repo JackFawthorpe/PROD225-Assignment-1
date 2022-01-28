@@ -31,16 +31,20 @@ public:
 	virtual EAttackDirection getDirection();
 	virtual Vector2D<int>* getPosition();
 	virtual PROD225Colours* getColour();
-
+	virtual Character* getOwner();
 	virtual EType getType();
+	virtual ETeam getTeam();
+	virtual int getDamage();
 
 protected:
 	bool m_dropped; // Distinguish between a held and dropped weapon
 	EType m_type;
+	int m_damage;
 	Character* m_owner;
 	Vector2D<int> m_position; // Only used when dropped
 	PROD225Colours m_colour;
 	Projectile* m_currentProjectile;
+	ETeam m_team;
 
 private:
 	void setColour();

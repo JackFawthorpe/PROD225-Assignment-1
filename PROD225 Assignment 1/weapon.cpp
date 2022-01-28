@@ -3,10 +3,12 @@
 #include "weapon.h"
 
 Weapon::Weapon()
-	:m_type(static_cast<EType>(rand() % 4 + 1))
+	:m_type(static_cast<EType>(rand() % 4 + 2))
 	, m_dropped(true)
 	, m_owner(NULL)
 	, m_currentProjectile(NULL)
+	, m_team(m_owner->getTeam())
+	, m_damage(5)
 {
 
 	setColour();
@@ -26,14 +28,16 @@ Weapon::~Weapon()
 }
 
 Weapon::Weapon(Character* owner)
-	:m_type(static_cast<EType>(rand() % 4 + 1))
+	:m_type(static_cast<EType>(rand() % 4 + 2))
 	,m_dropped(false)
 	, m_currentProjectile(NULL)
+	, m_damage(5)
 {
 
 	setColour();
 
 	m_owner = owner;
+	m_team = m_owner->getTeam();
 
 	if (MEMORY_CHECK_MODE)
 	{
@@ -119,7 +123,22 @@ PROD225Colours* Weapon::getColour()
 	return &m_colour;
 }
 
+Character* Weapon::getOwner()
+{
+	return m_owner;
+}
+
 EType Weapon::getType()
 {
 	return m_type;
+}
+
+ETeam Weapon::getTeam()
+{
+	return m_team;
+}
+
+int Weapon::getDamage()
+{
+	return m_damage;
 }

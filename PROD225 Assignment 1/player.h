@@ -19,8 +19,22 @@ public:
 	virtual void tick(char& keyPressed);
 	virtual	void evaluateKeyPress(char& direction);
 	virtual void draw() override;
+	virtual void hitCharacter(int& damage) override;
+	virtual void die() override;
 	void openDoor();
+	bool playerDead;
+	bool playerWon;
+	int getKeys();
+	void addKey();
+	void removeKey();
+	void addHeart();
+	int getHearts();
+	void addHealth(int amount);
 
+private:
+	int m_keyCount;
+	int m_moreKeysNeeded;
+	int m_heartsOfTerror;
 };
 
 #endif /*__PLAYER_H__*/

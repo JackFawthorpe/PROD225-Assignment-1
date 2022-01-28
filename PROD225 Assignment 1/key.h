@@ -3,7 +3,7 @@
 
 class Key
 {
-
+	
 };
 
 #endif /*__KEY_H__*/

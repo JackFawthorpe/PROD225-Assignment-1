@@ -12,9 +12,9 @@ Character::Character()
 	, m_rightHand(2, 1)
 	, m_currentHand(&m_rightHand)
 	, m_health(25)
+	, m_team(ETeam::Enemy)
+	, m_healthTick(-1)
 {
-	m_currentWeapon = new Weapon(this);
-	m_weaponInventory.addElement(m_currentWeapon);
 
 	if (MEMORY_CHECK_MODE)
 	{
@@ -87,6 +87,15 @@ void Character::attack()
 	m_currentWeapon->attack();
 }
 
+void Character::hitCharacter(int& damage)
+{
+	m_health -= damage;
+	if (m_health <= 0)
+	{
+		die();
+	}
+}
+
 void Character::setPosition(int x, int y)
 {
 	m_position.x = x;
@@ -128,4 +137,25 @@ void Character::setRoom(Room* currentRoom)
 Room* Character::getRoom() const
 {
 	return m_currentRoom;
+}
+
+ETeam Character::getTeam()
+{
+	return m_team;
+}
+
+void Character::addToRoom(Room* room)
+{
+	m_currentRoom = room;
+}
+
+void Character::heal(int& health)
+{
+	m_health = std::min(25, m_health + health);
+}
+
+
+void Character::die()
+{
+
 }

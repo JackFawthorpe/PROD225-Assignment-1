@@ -11,6 +11,12 @@
 #define UP_U_VEC Vector2D<int>(0, -1)
 #define DOWN_U_VEC Vector2D<int>(0, 1)
 
+enum class ETeam : uint8_t
+{
+	Player,
+	Enemy,
+};
+
 enum class EType : uint8_t
 {
 	None,

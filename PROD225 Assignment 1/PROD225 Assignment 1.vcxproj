@@ -140,10 +140,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="boss.cpp" />
     <ClCompile Include="character.cpp" />
     <ClCompile Include="door.cpp" />
     <ClCompile Include="enemy.cpp" />
-    <ClCompile Include="key.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="prod225cursorwrapper.cpp" />
@@ -158,7 +158,6 @@
     <ClInclude Include="character.h" />
     <ClInclude Include="door.h" />
     <ClInclude Include="enemy.h" />
-    <ClInclude Include="key.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="prod225colour.h" />
     <ClInclude Include="prod225cursorwrapper.h" />

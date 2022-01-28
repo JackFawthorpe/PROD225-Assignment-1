@@ -5,7 +5,6 @@
 #include "tarray.h"
 #include "prod225cursorwrapper.h"
 #include "actor.h"
-#include "weapon.h"
 
 class Weapon;
 class Room;
@@ -20,8 +19,9 @@ public:
 	virtual void draw();
 	virtual void move(EDirection direction);
 	virtual void attack();
-
-
+	virtual void hitCharacter(int& damage);
+	virtual void heal(int& health);
+	virtual void die();
 	virtual void setPosition(int x, int y);
 
 	virtual Vector2D<int>* getPosition();
@@ -31,6 +31,9 @@ public:
 	virtual TArray<Weapon*>* getInventory();
 	virtual void setRoom(Room* currentRoom);
 	virtual Room* getRoom() const;
+	virtual ETeam getTeam();
+	virtual void addToRoom(Room* room);
+
 
 protected:
 	Vector2D<int> m_leftHand;
@@ -42,14 +45,19 @@ protected:
 	EAttackDirection m_weaponDirection;
 	int m_health;
 	Room* m_currentRoom;
+	ETeam m_team;
+	int m_healthTick;
+
 };
 
 
-/*	The reason this is down here is because it was calling
+/*	The reason these is down here is because it was calling
 *	room to be defined which called Enemy to be defined which
 *	needed Character to be defined and I tried forward declarating
 *	and It didnt work so I succumbed to a bad practice for a simple
 *	solution, my guilt is immense and this day of coding is ruined */
 #include "room.h"
+/* Same solution with weapon*/
+#include "weapon.h"
 
 #endif /*__CHARACTER_H__*/

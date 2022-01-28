@@ -42,10 +42,10 @@
     <ClCompile Include="room.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="key.cpp">
+    <ClCompile Include="door.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="door.cpp">
+    <ClCompile Include="boss.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -84,9 +84,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="wall.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="key.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="door.h">

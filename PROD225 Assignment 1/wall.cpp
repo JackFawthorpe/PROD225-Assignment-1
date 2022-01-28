@@ -5,9 +5,10 @@
 #include "prod225cursorwrapper.h"
 
 
-Wall::Wall(Vector2D<int> first, Vector2D<int> second)
+Wall::Wall(Vector2D<int> first, Vector2D<int> second, Room* room)
 {
 
+	m_room = room;
 	m_vert = first.y != second.y;
 	double a = sqrt(first.x * first.x + first.y * first.y);
 	double b = sqrt(second.x * second.x + second.y * second.y);
@@ -39,6 +40,9 @@ Wall::~Wall()
 
 void Wall::draw() const
 {
+
+	SetTextColour(m_room->getColour(), PROD225Colours::BLACK);
+
 	Vector2D<int> increment;
 	if (m_vert)
 	{

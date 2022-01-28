@@ -29,7 +29,14 @@ Door::~Door()
 void Door::draw() const
 {
 	cursorToVector(*m_currentPosition);
-	std::cout << char(241);
+	if (m_completed)
+	{
+		std::cout << "O";
+	}
+	else
+	{
+		std::cout << char(241);
+	}
 }
 
 Vector2D<int> Door::getPosition() const
@@ -75,11 +82,12 @@ void Door::swapRoom(Character* character)
 	Room* temp = m_currentRoom;
 	m_currentRoom = m_offRoom;
 	m_offRoom = temp;
-
+	Vector2D<int> playerOffset = *m_currentPosition + *character->getPosition() * -1;
 	Vector2D<int>* posTemp = m_currentPosition;
 	m_currentPosition = m_offPosition;
 	m_offPosition = posTemp;
-
+	playerOffset += *m_currentPosition;
+	character->setPosition(playerOffset.x, playerOffset.y);
 	character->setRoom(m_currentRoom);
 
 }
